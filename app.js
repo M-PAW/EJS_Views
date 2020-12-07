@@ -11,10 +11,15 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(express.static("partials"));
 
+/**
+ * function:
+ * 
+ */
+
 // Contents for each page
 const pageContents = {
     'home': "Share your favorite quote with the world!",
-    'about': "About Content",
+    'about': "This project was created to solidify my understanding of EJS Views which I learned while working through the course, The Complete 2020 Web Development Bootcamp by Angela Yu. This course is available on Udemy.",
     'contact': "Contact Content"
 }
 
@@ -40,6 +45,7 @@ app.get("/compose", (req,res) => {
 app.post("/compose", (req,res) => {
     const post = {
         'title': req.body.title,
+        'author': req.body.author || "Unknown",
         'content': req.body.content
     }
     posts.push(post);
@@ -54,6 +60,7 @@ app.get("/posts/:post", (req,res) => {
         _.lowerCase(post.title)===requestedPost?
         res.render("post", 
         {title: post.title,
+         author: post.author,
          content: post.content}):null;
       })
     }

@@ -33,3 +33,10 @@
 	font-size: 12px;
   color: #fff;
 }
+
+.card {
+    box-shadow: 0px 0px 20px rgb(235, 233, 233),
+            1px 1px 4px rgb(122, 121, 121);
+    padding: 10px 30px 15px 30px;
+    margin-top: 20px;
+}
